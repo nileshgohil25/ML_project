@@ -9,7 +9,7 @@ from sklearn.metrics import confusion_matrix, ConfusionMatrixDisplay
 
 # --- Page Config ---
 st.set_page_config(page_title="Simple ML Builder", layout="wide")
-st.title("🤖 Simple Machine Learning App")
+st.title("Simple Machine Learning App")
 st.write("Upload a dataset and let the AI find patterns!")
 
 # --- 1. Data Upload ---
@@ -18,7 +18,7 @@ uploaded_file = st.sidebar.file_uploader("Upload your CSV file", type="csv")
 
 if uploaded_file is not None:
     df = pd.read_csv(uploaded_file)
-    st.subheader("📊 Data Preview")
+    st.subheader("Data Preview")
     st.write(df.head())
 
     # --- 2. Choose Model ---
@@ -26,7 +26,7 @@ if uploaded_file is not None:
     mode = st.sidebar.selectbox("Select ML Type", ["Supervised (Prediction)", "Unsupervised (Grouping)"])
 
     if mode == "Supervised (Prediction)":
-        st.header("🌳 Decision Tree Classifier")
+        st.header(" Decision Tree Classifier")
         
         # Select columns
         features = st.multiselect("Select Features (Input)", df.columns, default=df.columns[:-1])
@@ -56,7 +56,7 @@ if uploaded_file is not None:
             st.pyplot(fig)
 
     else:
-        st.header("📍 K-Means Clustering")
+        st.header(" K-Means Clustering")
         clusters = st.sidebar.slider("Number of Groups (K)", 2, 10, 3)
         features = st.multiselect("Select Features for Grouping", df.columns, default=df.columns[:2])
 
@@ -73,4 +73,4 @@ if uploaded_file is not None:
             st.write(df)
 
 else:
-    st.info("👈 Please upload a CSV file in the sidebar to begin.")
+    st.info("Please upload a CSV file in the sidebar to begin.")
